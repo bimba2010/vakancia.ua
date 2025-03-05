@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Деталі вакансії: {{ resume.title }}
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="container mt-3">
+        <div class="card border border-3 border-dark">
+            <div class="card-body bg-light"> <!-- Клас bg-light для світло-сірого фону -->
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        <h1>{{ resume.title }}</h1>
+        <p><strong>Ім'я:</strong> {{ resume.creator }}</p>
+        <p><strong>Резюме:</strong> {{ resume.resume }} </p>
+        <p><strong>Категорія:</strong> {{ resume.resumekategoria }} </p>
+
+
+        <h4>Створено користувачем: {{ resume.creator.username }}</h4>
+
+        <a href="{% url 'resume_list' %}" class="btn btn-primary">Повернутися до списку резюме</a>
+
+        {% if resume.creator == user %}
+        <!-- Кнопка для видалення вакансії -->
+        <form action="{% url 'resume_delete' resume.pk %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Видалити резюме</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+<img src="https://www.w3schools.com/bootstrap5/img_avatar1.png" alt="Моє улюблене зображення"  width="400">
+
+
+{% endblock %}

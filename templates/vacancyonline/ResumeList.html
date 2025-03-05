@@ -1,0 +1,46 @@
+<!-- vacancyonline/ResumeList.html -->
+{% extends 'base.html' %}
+
+{% block title %}Список резюме{% endblock %}
+
+{% block content %}
+  <h2>Список всіх резюме</h2>
+
+  <ul>
+
+  <a href="{% url 'resume_create' %}" class="btn btn-primary">Створити нове резюме</a>
+  <a href="{% url 'resumekategoria' %}" class="btn btn-primary">Категорії резюме</a>
+    {% for resume in resumes %}
+      <li>
+
+        <div class="container mt-3">
+            <div class="card border border-3 border-dark">
+                <div class="card-body bg-light"> <!-- Клас bg-light для світло-сірого фону -->
+        <strong>{{ resume.title }}</strong><br>
+        <p>{{ resume.resume }}</p>
+        <p><strong>Створено користувачем: </strong>{{ resume.creator.username }}</p>
+                  <img src="https://www.w3schools.com/bootstrap5/img_avatar1.png" alt="Моє улюблене зображення"  width="400">
+               <a href="{% url 'resume_detail' resume.pk %}" class="btn btn-primary">Деталі резюме</a>
+      </li>
+
+
+
+
+
+
+
+
+
+
+    {% empty %}
+      <li>Немає резюме для відображення.</li>
+    {% endfor %}
+  </ul>
+
+
+
+
+
+
+
+{% endblock %}

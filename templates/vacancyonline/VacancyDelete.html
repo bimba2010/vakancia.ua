@@ -1,0 +1,13 @@
+<!-- vacancyonline/VacancyConfirmDelete.html -->
+{% extends 'base.html' %}
+
+{% block title %}Підтвердження видалення{% endblock %}
+
+{% block content %}
+  <h1>Ви впевнені, що хочете видалити вакансію "{{ vacancy.title }}"?</h1>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a href="{% url 'vacancy_list' %}" class="btn btn-secondary">Скасувати</a>
+  </form>
+{% endblock %}

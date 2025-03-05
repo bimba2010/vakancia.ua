@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}ОПИТУВАННЯ{% endblock %}
+
+{% block content %}
+<ul>
+        {% for vakancy in vakancy_ua %}
+            <li>
+                <strong>{{ vakancy.question }}</strong><br>
+                <p>{{ vakancy.question_date }}</p>
+
+            </li>
+        {% empty %}
+            <li>Немає елементів для відображення.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

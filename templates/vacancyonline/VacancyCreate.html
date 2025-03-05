@@ -1,0 +1,16 @@
+<!-- vacancyonline/VacancyCreate.html -->
+{% extends 'base.html' %}
+
+{% block title %}Створити нову вакансію{% endblock %}
+
+{% block content %}
+  <h2>Створити нову вакансію</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Виводимо форму -->
+    <button type="submit" class="btn btn-primary">Створити вакансію</button>
+  </form>
+
+  <a href="{% url 'vacancy_list' %}" class="btn btn-secondary mt-3">До списку вакансій</a>
+{% endblock %}

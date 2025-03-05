@@ -1,0 +1,16 @@
+<!-- vacancyonline/VacancyConfirmDelete.html -->
+{% extends 'base.html' %}
+
+{% block title %}Підтвердження видалення{% endblock %}
+
+{% block content %}
+  <h1>Ви впевнені, що хочете видалити вакансію "{{ resume.title }}"?</h1>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a href="{% url 'resume_list' %}" class="btn btn-secondary">Скасувати</a>
+  </form>
+
+<img src="https://img.favpng.com/0/11/3/smiley-emoticon-sadness-animation-clip-art-png-favpng-4TW3cwaPdc77DeYafp0cAG9P9.jpg" alt="Моє улюблене зображення"  width="400">
+<h1>Не видаляй мене</h1>
+{% endblock %}

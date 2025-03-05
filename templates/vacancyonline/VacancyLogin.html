@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Вхід{% endblock %}
+
+{% block content %}
+  <h2>Вхід до вашого акаунту</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Виводимо форму для входу -->
+    <button type="submit" class="btn btn-primary">Увійти</button>
+  </form>
+
+  <p>Ще не маєте акаунту? <a href="{% url 'signup' %}">Зареєструйтеся тут</a></p>
+{% endblock %}
