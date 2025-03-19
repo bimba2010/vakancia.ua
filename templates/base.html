@@ -78,20 +78,15 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
+            <a class="navbar-brand" class="nav-link" href="{% url 'vacancy_list' %}">Вакансій</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
 
-                    <li>
-                        <button  class="nav-link" href="{% url 'vacancy_list' %}">Вакансій</button>
-                    </li>
-
-
-
                     <li class="nav-item">
-                        <button  class="nav-link" href="{% url 'resume_list' %}">Резюме</button>
+                        <a class="navbar-brand" class="nav-link active" href="{% url 'resume_list' %}">Резюме</a>
                     </li>
 
 
@@ -99,17 +94,14 @@
 
 
                     <li>
-                        <button  class="nav-link " aria-current="page" href="{% url 'about_us' %}">Про нас</button>
+                        <a class="navbar-brand" class="nav-link " aria-current="page" href="{% url 'about_us' %}">Про нас</a>
                     </li>
-
-
                     <li class="nav-item">
-                        <button  class="nav-link" href="{% url 'vacancy_create' %}">Створити вакансію</button>
+                        <a class="navbar-brand" class="nav-link" href="{% url 'vacancy_create' %}">Створити вакансію</a>
                     </li>
-
-
                     <li class="nav-item">
-                        <button class="nav-link" href="{% url 'resume_create' %}">Створити резюме</button>
+                        
+                        <a class="navbar-brand" class="nav-link" href="{% url 'resume_create' %}">Створити резюме</a>
                     </li>
 
                     {% if user.is_authenticated %}
