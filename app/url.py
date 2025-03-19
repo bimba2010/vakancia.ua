@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth.views import LogoutView
 
 from . import views
 from .views import VacancyListView, VacancyDetailView, VacancyCreateView, VacancyDeleteView, ResumeCreateView, \
@@ -6,7 +7,7 @@ from .views import VacancyListView, VacancyDetailView, VacancyCreateView, Vacanc
     VacancyKategoriaView, VacancyTehnoView, VacancyDergavnaView, ResumeKategoriaView, ResumeProjectsView, \
     ResumeProfessionalExperienceView, VacancyCityView, VacancyKyivView, VacancyLvivView, VacancyOdessaView, \
     VacancyKharkivView, VacancyDnipropetrovskView, VacancyZaporizhzhiaView, VacancyCherkasyView, VacancyChernivtsiView, \
-    VacancyPoltavaView, VacancyVinnytsiaView
+    VacancyPoltavaView, VacancyVinnytsiaView, VacancyLogOutView
 
 urlpatterns = [
     path('vacancy_list/', VacancyListView.as_view(), name = 'vacancy'),
@@ -36,15 +37,32 @@ urlpatterns = [
     path('resumekategoria/', ResumeKategoriaView.as_view(), name='resumekategoria'),
     path('professionalexperience/', ResumeProfessionalExperienceView.as_view(), name='professionalexperience'),
     path('projects/', ResumeProjectsView.as_view(), name='projects'),
+
+
+
+
+
     path('city/<str:vacancycity>/', VacancyCityView.as_view(), name='vacancy_city'),
+
     path('vacancyvinnytsia/', VacancyVinnytsiaView.as_view(), name='vacancyvinnytsia'),
+
     path('vacancypoltava/', VacancyPoltavaView.as_view(), name='vacancypoltava'),
+
     path('vacancychernivtsi/', VacancyChernivtsiView.as_view(), name='vacancychernivtsi'),
+
     path('vacancycherkasy/', VacancyCherkasyView.as_view(), name='vacancycherkasy'),
+
     path('vacancyzaporizhzhia/', VacancyZaporizhzhiaView.as_view(), name='vacancyzaporizhzhia'),
+
     path('vacancydnipropetrovsk/', VacancyDnipropetrovskView.as_view(), name='vacancydnipropetrovsk'),
+
     path('vacancykharkiv/', VacancyKharkivView.as_view(), name='vacancykharkiv'),
-    path('vacancyodessa/', VacancyOdessaView.as_view(), name=''),
+
+    path('vacancyodessa/', VacancyOdessaView.as_view(), name='vacancyodessa'),
+
     path('vacancylviv/', VacancyLvivView.as_view(), name='vacancylviv'),
+
     path('vacancykyiv/', VacancyKyivView.as_view(), name='vacancykyiv'),
+
+    path('logout/', LogoutView.as_view(next_page='vacancy'), name='logout'),
 ]

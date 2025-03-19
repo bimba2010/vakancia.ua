@@ -12,6 +12,53 @@
 </head>
 <body>
 
+
+
+                <style>
+                    body {
+                    font-family: Arial, sans-serif;
+                    background-color: #330066;
+                    margin: 0;
+                    padding: 0;
+                    color: #330066;
+                          }
+
+
+
+
+                    .card {
+                        background-color: #190033; /* Тепер фон картки темно-сірий */
+                        color: white; /* Текст буде білим для контрасту */
+                        border-color: #190033; /* Темніша рамка */
+                    }
+
+                    /* При наведенні змінюється колір фону */
+                    .card:hover {
+                    background-color: #190033; /* Трохи темніший колір при наведенні */
+                    }
+
+
+                    p {
+                        color: black
+
+
+
+                        }
+
+
+
+
+                </style>
+
+
+
+
+
+
+
+
+
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -34,10 +81,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'resume_create' %}">Створити резюме</a>
                     </li>
+
                     {% if user.is_authenticated %}
                         <li class="nav-item">
 
+                            <a class="nav-link">
+                         <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Вийти</button>
+                            </form>
+                            </a>
+
                         </li>
+
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Увійти</a>
@@ -47,11 +103,26 @@
                         </li>
 
 
+                    <li class="nav-item">
+
+
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <a class="nav-link"<button type="submit">Вийти</button></a>
+                    </form>
+
+
+                    </a>
+                    </li>
+
+
+
                     {% if user.is_authenticated %}
                         <!-- Посилання для виведення кнопки виходу -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Вийти</a>
-                        </li>
+                         <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Вийти</button>
+                            </form>
                     {% else %}
 
                     {% endif %}

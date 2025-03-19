@@ -9,11 +9,27 @@
 
 
 
-
-      <a href="{% url 'vacancy_create' %}" class="btn btn-primary">Створити вакансію</a>
+<p>
+    <a href="{% url 'vacancy_create' %}" class="btn btn-primary">Створити вакансію</a>
 
 
     <a href="{% url 'kategoria' %}" class="btn btn-primary">Повернутися до списку категорій вакансій</a>
+</p>
+
+
+
+
+
+    <a href="{% url 'vacancykyiv' %}" class="btn btn-primary">Київ</a>
+    <a href="{% url 'vacancylviv' %}" class="btn btn-primary">Львів</a>
+    <a href="{% url 'vacancyodessa' %}" class="btn btn-primary">Одеса</a>
+    <a href="{% url 'vacancykharkiv' %}" class="btn btn-primary">Харків</a>
+    <a href="{% url 'vacancydnipropetrovsk' %}" class="btn btn-primary">Дніпро</a>
+    <a href="{% url 'vacancyzaporizhzhia' %}" class="btn btn-primary">Запоріжжя</a>
+    <a href="{% url 'vacancycherkasy' %}" class="btn btn-primary">Черкаси</a>
+    <a href="{% url 'vacancychernivtsi' %}" class="btn btn-primary">Чернівці</a>
+    <a href="{% url 'vacancypoltava' %}" class="btn btn-primary">Полтава</a>
+    <a href="{% url 'vacancyvinnytsia' %}" class="btn btn-primary">Вінниця</a>
 
 
 
@@ -21,22 +37,7 @@
 
 
 
-    {% for vacancy in vacancies %}
-    <li>
-    <div class="container mt-3">
-        <div class="card border border-3 border-dark">
-            <div class="card-body bg-light"> <!-- Клас bg-light для світло-сірого фону -->
-                <strong>{{ vacancy.title }}</strong><br>
-                <p>{{ vacancy.title_date }}</p>
-                <img src="https://st.depositphotos.com/1898481/3858/i/600/depositphotos_38585249-stock-photo-unnamed.jpg" alt="Моє улюблене зображення"  width="400">
-                <a href="{% url 'vacancy_detail' vacancy.pk %}">Деталі вакансії</a>
-            </div>
-        </div>
-    </div>
-</li>
-    {% empty %}
-    <li>Немає елементів для відображення.</li>
-    {% endfor %}
+
 
 
     <h3>Знайди тут свою роботу</h3>

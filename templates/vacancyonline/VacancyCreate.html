@@ -5,12 +5,13 @@
 
 {% block content %}
   <h2>Створити нову вакансію</h2>
-
+<h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}  <!-- Виводимо форму -->
     <button type="submit" class="btn btn-primary">Створити вакансію</button>
   </form>
+</h1>
 
   <a href="{% url 'vacancy_list' %}" class="btn btn-secondary mt-3">До списку вакансій</a>
 {% endblock %}

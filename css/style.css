@@ -1,0 +1,22 @@
+/* style.css */
+
+/* Стилі для body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #808080;
+    margin: 0;
+    padding: 0;
+    color: #808080;
+}
+
+/* Стилі для заголовків h1 */
+h1 {
+    color: #4CAF50;
+    font-size: 36px;
+}
+
+/* Стилі для абзаців */
+p {
+    color: #555;
+    line-height: 1.6;
+}

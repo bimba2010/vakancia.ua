@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Технології{% endblock %}
+
+
+
+
+{% block content %}
+<ul>
+
+
+
+        <a href="{% url 'vacancy_create' %}" class="btn btn-primary">Створити вакансію</a>
+
+
+    <a href="{% url 'kategoria' %}" class="btn btn-primary">Повернутися до списку категорій вакансій</a>
+
+
+
+
+    {% for vacancy in vacancychernivtsi %}
+    <li>
+    <div class="container mt-3">
+        <div class="card border border-3 border-dark">
+            <div class="card-body bg-light"> <!-- Клас bg-light для світло-сірого фону -->
+                <strong>{{ vacancy.title }}</strong><br>
+                <p>{{ vacancy.title_date }}</p>
+                <img src="https://st.depositphotos.com/1898481/3858/i/600/depositphotos_38585249-stock-photo-unnamed.jpg" alt="Моє улюблене зображення"  width="400">
+                <a href="{% url 'vacancy_detail' vacancy.pk %}">Деталі вакансії</a>
+            </div>
+        </div>
+    </div>
+</li>
+    {% empty %}
+    <li>Немає елементів для відображення.</li>
+    {% endfor %}
+
+    <h3>Знайди тут свою роботу</h3>
+
+
+</ul>
+{% endblock %}

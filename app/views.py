@@ -178,7 +178,7 @@ class VacancyVinnytsiaView(ListView):
 
         def get_queryset(self):
             # Отримуємо категорію з URL і фільтруємо пости по категорії
-            return Vacancy.objects.filter(kategoria='Vinnytsia')
+            return Vacancy.objects.filter(city='Vinnytsia')
 
 
 class VacancyPoltavaView(ListView):
@@ -188,7 +188,7 @@ class VacancyPoltavaView(ListView):
 
     def get_queryset(self):
         # Отримуємо категорію з URL і фільтруємо пости по категорії
-        return Vacancy.objects.filter(kategoria='Poltava')
+        return Vacancy.objects.filter(city='Poltava')
 
 
 
@@ -199,7 +199,7 @@ class VacancyChernivtsiView(ListView):
 
     def get_queryset(self):
         # Отримуємо категорію з URL і фільтруємо пости по категорії
-        return Vacancy.objects.filter(kategoria='Chernivtsi')
+        return Vacancy.objects.filter(city='Chernivtsi')
 
 
 
@@ -210,7 +210,7 @@ class VacancyCherkasyView(ListView):
 
     def get_queryset(self):
         # Отримуємо категорію з URL і фільтруємо пости по категорії
-        return Vacancy.objects.filter(kategoria='Cherkasy')
+        return Vacancy.objects.filter(city='Cherkasy')
 
 
 class VacancyZaporizhzhiaView(ListView):
@@ -220,7 +220,7 @@ class VacancyZaporizhzhiaView(ListView):
 
     def get_queryset(self):
         # Отримуємо категорію з URL і фільтруємо пости по категорії
-        return Vacancy.objects.filter(kategoria='Zaporizhzhia')
+        return Vacancy.objects.filter(city='Zaporizhzhia')
 
 
 
@@ -231,7 +231,7 @@ class VacancyDnipropetrovskView(ListView):
 
     def get_queryset(self):
         # Отримуємо категорію з URL і фільтруємо пости по категорії
-        return Vacancy.objects.filter(kategoria='Dnipropetrovsk')
+        return Vacancy.objects.filter(city='Dnipropetrovsk')
 
 
 
@@ -243,7 +243,7 @@ class VacancyKharkivView(ListView):
 
     def get_queryset(self):
         # Отримуємо категорію з URL і фільтруємо пости по категорії
-        return Vacancy.objects.filter(kategoria='Kharkiv')
+        return Vacancy.objects.filter(city='Kharkiv')
 
 
 
@@ -256,7 +256,7 @@ class VacancyOdessaView(ListView):
 
     def get_queryset(self):
         # Отримуємо категорію з URL і фільтруємо пости по категорії
-        return Vacancy.objects.filter(kategoria='Odessa')
+        return Vacancy.objects.filter(city='Odessa')
 
 
 
@@ -269,7 +269,7 @@ class VacancyLvivView(ListView):
 
     def get_queryset(self):
         # Отримуємо категорію з URL і фільтруємо пости по категорії
-        return Vacancy.objects.filter(kategoria='Lviv')
+        return Vacancy.objects.filter(city='Lviv')
 
 
 
@@ -282,4 +282,10 @@ class VacancyKyivView(ListView):
 
     def get_queryset(self):
         # Отримуємо категорію з URL і фільтруємо пости по категорії
-        return Vacancy.objects.filter(kategoria='Kyiv')
+        return Vacancy.objects.filter(city='Kyiv')
+
+
+
+class VacancyLogOutView(ListView):
+    template_name = 'vacancyonline/VacancyLogOut.html'
+    context_object_name = 'logout'
