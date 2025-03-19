@@ -55,7 +55,7 @@ class Vacancy(models.Model):
 class Resume(models.Model):
     title = models.CharField(max_length=255)  # Назва резюме
     creator = models.ForeignKey(User, on_delete=models.CASCADE)  # Користувач, який створив резюме
-    resume = models.TextField()  # Текст самого резюме
+    resume = models.TextField(max_length= 10000)  # Текст самого резюме
     resumekategoria = models.TextField(null = True,
 
                                  choices=[(tag.name, tag.value) for tag in ResumeKategoria],

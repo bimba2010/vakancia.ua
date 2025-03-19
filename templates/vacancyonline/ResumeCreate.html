@@ -4,13 +4,15 @@
 {% block title %}Створити резюме{% endblock %}
 
 {% block content %}
-  <h2>Створити нове резюме</h2>
+  <h2 style="color: white;">Створити нове резюме</h2>
 
+<h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}  <!-- Виведення форми -->
     <button type="submit" class="btn btn-primary">Створити резюме</button>
   </form>
+</h1>
 
   <a href="{% url 'resume_list' %}" class="btn btn-secondary mt-3">До списку резюме</a>
 {% endblock %}

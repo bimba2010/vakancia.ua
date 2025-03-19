@@ -3,7 +3,7 @@
 {% block title %}Реєстрація{% endblock %}
 
 {% block content %}
-  <h2>Створення нового акаунту</h2>
+  <h2 style="color: white;">Створення нового акаунту</h2>
 
   <form method="post">
     {% csrf_token %}
@@ -11,5 +11,5 @@
     <button type="submit" class="btn btn-primary">Зареєструватися</button>
   </form>
 
-  <p>Вже маєте акаунт? <a href="{% url 'login' %}">Увійдіть тут</a></p>
+  <p style="color: white;">Вже маєте акаунт? <a href="{% url 'login' %}">Увійдіть тут</a></p>
 {% endblock %}
