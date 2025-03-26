@@ -15,6 +15,7 @@
             <div class="card"> <!-- Клас bg-light для світло-сірого фону -->
                 <strong>{{ vacancy.title }}</strong><br>
                 <p>{{ vacancy.title_date }}</p>
+                <a href="{% url 'vacancy_list' %}" class="btn btn-secondary mt-3">До списку вакансій</a>
                 <h1><a href="{% url 'tehno' %}"class="btn btn-primary">Техно</a></h1>
                 <h1><a href="{% url 'dergavna' %}"class="btn btn-primary">Державна робота</a></h1>
                 <a href="{% url 'vacancy_city' 'Lviv' %}"  class="btn btn-primary">Посилання на вакансії міста</a>

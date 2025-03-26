@@ -155,7 +155,7 @@ class ResumeProjectsView(ListView):
 
 class VacancyCityView(ListView):
     model = Vacancy
-    template_name = 'vacancyonline/vacancycity.html'
+    template_name = 'vacancyonline/VacancyCity.html'
     context_object_name = 'vacancies'
 
     def get_queryset(self):
