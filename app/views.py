@@ -135,7 +135,7 @@ class VacancyDergavnaView(ListView):
 
 class ResumeKategoriaView(ListView):
     model = Resume
-    template_name = 'vacancyonline/resumekategoria.html'
+    template_name = 'vacancyonline/ResumeKategoria.html'
     context_object_name = 'kategoria'
 
 
