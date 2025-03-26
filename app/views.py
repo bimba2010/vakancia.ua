@@ -141,7 +141,7 @@ class ResumeKategoriaView(ListView):
 
 class ResumeProfessionalExperienceView(ListView):
     model = Resume
-    template_name = 'vacancyonline/resumeprofessionalexperience.html'
+    template_name = 'vacancyonline/ResumeProfessionalExperience.html'
     context_object_name = 'professionalexperience'
 
     def get_queryset(self):
@@ -151,7 +151,7 @@ class ResumeProfessionalExperienceView(ListView):
 
 class ResumeProjectsView(ListView):
     model = Resume
-    template_name = 'vacancyonline/resumeprojects.html'
+    template_name = 'vacancyonline/ResumeProjects.html'
     context_object_name = 'projects'
 
     def get_queryset(self):
