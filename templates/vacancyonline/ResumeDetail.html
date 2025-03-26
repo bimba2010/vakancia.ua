@@ -28,13 +28,16 @@
 
         <a href="{% url 'resume_list' %}" class="btn btn-primary">Повернутися до списку резюме</a>
 
-        {% if resume.creator == user %}
+        {% if resume.creator == user or user.is_superuser %}
         <!-- Кнопка для видалення вакансії -->
         <form action="{% url 'resume_delete' resume.pk %}" method="post" style="display:inline;">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Видалити резюме</button>
+
         </form>
+
         {% endif %}
+
     </div>
 </div>
 

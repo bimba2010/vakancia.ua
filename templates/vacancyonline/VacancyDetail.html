@@ -35,7 +35,7 @@
 
         <a href="{% url 'vacancy_list' %}" class="btn btn-primary">Повернутися до списку вакансій</a>
 
-        {% if vacancy.creator == user %}
+        {% if vacancy.creator == user or user.is_superuser %}
         <!-- Кнопка для видалення вакансії -->
         <form action="{% url 'vacancy_delete' vacancy.pk %}" method="post" style="display:inline;">
             {% csrf_token %}
