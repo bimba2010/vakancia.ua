@@ -1,5 +1,6 @@
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -8,6 +9,9 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, T
 
 from app.Forms import VacancyForm, ResumeForm
 from app.models import Vacancy, Resume, Kategoria
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 
 
 class VacancyListView(ListView):
@@ -20,11 +24,12 @@ class VacancyDetailView(DetailView):
     template_name = 'vacancyonline/VacancyDetail.html'  # Шаблон для відображення детальної інформації
     context_object_name = 'vacancy'  # Це ім'я змінної в шаблоні, в яку буде передаватися конкретна вакансія
 
-class VacancyCreateView(CreateView):
+class VacancyCreateView(LoginRequiredMixin, CreateView):
     model = Vacancy
     template_name = 'vacancyonline/VacancyCreate.html'  # Шаблон для створення вакансії
     form_class = VacancyForm  # Форма для створення вакансії
     success_url = reverse_lazy('vacancy_list')  # Куди перенаправляти після успішного створення
+    login_url = '/login/'  # Вказуємо шлях до сторінки входу
 
     def form_valid(self, form):
         form.instance.creator = self.request.user  # Автоматично прив'язуємo автора вакансії
@@ -37,11 +42,12 @@ class VacancyDeleteView(DeleteView):
 
 
 
-class ResumeCreateView(CreateView):
+class ResumeCreateView(LoginRequiredMixin, CreateView):
     model = Resume
     form_class = ResumeForm
     template_name = 'vacancyonline/ResumeCreate.html'  # Шаблон для створення резюме
     success_url = reverse_lazy('resume_list')  # Перенаправляємо після успішного створення на список резюме
+    login_url = '/login/'  # Вказуємо шлях до сторінки входу
 
     def form_valid(self, form):
         form.instance.creator = self.request.user  # Автоматично прив'язуємо користувача до резюме
@@ -289,3 +295,6 @@ class VacancyKyivView(ListView):
 class VacancyLogOutView(ListView):
     template_name = 'vacancyonline/VacancyLogOut.html'
     context_object_name = 'logout'
+
+
+

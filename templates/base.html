@@ -12,155 +12,146 @@
 </head>
 <body>
 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #330066;
+        margin: 0;
+        padding: 0;
+        color: white; /* Загальний колір тексту білий */
+    }
 
+    .card {
+        background-color: #190033;
+        color: white;
+        border-color: #190033;
+    }
 
+    .card:hover {
+        background-color: #190033;
+    }
 
+    h1, h2, h3, h4, h5, h6 {
+        color: white;
+    }
 
+    p {
+        color: white;
+    }
 
+    .nav-link {
+        color: white;
+    }
 
-                <style>
-                    body {
-                    font-family: Arial, sans-serif;
-                    background-color: #330066;
-                    margin: 0;
-                    padding: 0;
-                    color: #330066;
-                          }
+    .nav-link:hover {
+        color: darkviolet;
+    }
 
+    /* Стилі для всіх кнопок */
+    .btn-purple {
+        background-color: #6a0dad; /* Фіолетовий колір */
+        border-color: #6a0dad; /* Фіолетова рамка */
+        color: white; /* Текст білого кольору */
+        padding: 10px 20px;
+        border-radius: 5px; /* Округлені краї */
+        text-decoration: none; /* Без підкреслення */
+        display: inline-block;
+        transition: background-color 0.3s, border-color 0.3s; /* Плавна зміна кольору */
+    }
 
+    .btn-purple:hover {
+        background-color: #9b4dca; /* Світліший фіолетовий при наведенні */
+        border-color: #9b4dca; /* Світліша рамка при наведенні */
+    }
 
+    /* Для кнопок в навігації */
+    .navbar .btn, .navbar .nav-link, .navbar .navbar-brand {
+        color: white;
+        background-color: #6a0dad;
+        border-color: #6a0dad;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
 
-                    .card {
-                        background-color: #190033; /* Тепер фон картки темно-сірий */
-                        color: white; /* Текст буде білим для контрасту */
-                        border-color: #190033; /* Темніша рамка */
-                    }
+    .navbar .btn:hover, .navbar .nav-link:hover, .navbar .navbar-brand:hover {
+        background-color: #9b4dca;
+        border-color: #9b4dca;
+    }
 
-                    /* При наведенні змінюється колір фону */
-                    .card:hover {
-                    background-color: #190033; /* Трохи темніший колір при наведенні */
-                    }
+    /* Для кнопки "Вийти" */
+    .logout-btn {
+        background-color: #6a0dad;
+        border-color: #6a0dad;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
 
+    .logout-btn:hover {
+        background-color: #9b4dca;
+        border-color: #9b4dca;
+    }
+</style>
 
-                    p {
-                        color: white
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand btn-purple" href="{% url 'vacancy_list' %}">Вакансій</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="navbar-brand btn-purple" href="{% url 'resume_list' %}">Резюме</a>
+                </li>
+                <li>
+                    <a class="navbar-brand btn-purple" href="{% url 'about_us' %}">Про нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand btn-purple" href="{% url 'vacancy_create' %}">Створити вакансію</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand btn-purple" href="{% url 'resume_create' %}">Створити резюме</a>
+                </li>
 
-
-
-                        }
-
-                    bg-light {
-                        background-color: #190033; /* Трохи темніший колір при наведенні */
-
-
-                    }
-
-                    .nav-link {
-                      color: white;  /* Фіолетовий колір */
-                    }
-
-                    .nav-link:hover {
-                      color: darkviolet;  /* Колір при наведенні */
-                    }
-
-
-                </style>
-
-
-
-
-
-
-
-
-
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" class="nav-link" href="{% url 'vacancy_list' %}">Вакансій</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-
+                {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="navbar-brand" class="nav-link active" href="{% url 'resume_list' %}">Резюме</a>
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button class="logout-btn" type="submit">Вийти</button>
+                        </form>
                     </li>
-
-
-
-
-
-                    <li>
-                        <a class="navbar-brand" class="nav-link " aria-current="page" href="{% url 'about_us' %}">Про нас</a>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="navbar-brand btn-purple" href="{% url 'login' %}">Увійти</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navbar-brand" class="nav-link" href="{% url 'vacancy_create' %}">Створити вакансію</a>
+                        <a class="navbar-brand btn-purple" href="{% url 'signup' %}">Зареєструватися</a>
                     </li>
-                    <li class="nav-item">
-
-                        <a class="navbar-brand" class="nav-link" href="{% url 'resume_create' %}">Створити резюме</a>
-                    </li>
-
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-
-                            <a class="nav-link">
-                         <form action="{% url 'logout' %}" method="post">
-                                {% csrf_token %}
-                                <button  class="nav-link" type="submit">Вийти</button>
-                            </form>
-                            </a>
-
-                        </li>
-
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="navbar-brand" class="nav-link" href="{% url 'login' %}">Увійти</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand" class="nav-link" href="{% url 'signup' %}">Зареєструватися</a>
-                        </li>
-
-
-
-
-
-                    {% if user.is_authenticated %}
-
-                    {% else %}
-
-                    {% endif %}
-
-
-                    {% endif %}
-                </ul>
-            </div>
+                {% endif %}
+            </ul>
         </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container mt-4">
-        {% block content %}
-        <!-- Вміст сторінки -->
-        {% endblock %}
     </div>
+</nav>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-4">
-        <p>&copy; 2025 ВАКАНСІЇ.</p>
-    </footer>
+<!-- Main Content -->
+<div class="container mt-4">
+    {% block content %}
+    <!-- Вміст сторінки -->
+    {% endblock %}
+</div>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-4">
+    <p>&copy; 2025 ВАКАНСІЇ.</p>
+</footer>
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-
-    <link rel="stylesheet" href="/static/css/styles.css">
-
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
 </body>
 </html>

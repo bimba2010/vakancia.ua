@@ -48,6 +48,7 @@ class Vacancy(models.Model):
         choices=[(tag.name, tag.value) for tag in Kategoria],
         default=Kategoria.Tehno.name,)# Встановіть стандартний статус)
     mainvacancy = models.CharField(null = True, max_length= 100000)
+    kontaktu = models.CharField(null = True, max_length= 100000)
 
 
 
@@ -61,7 +62,7 @@ class Resume(models.Model):
                                  choices=[(tag.name, tag.value) for tag in ResumeKategoria],
                                  default=ResumeKategoria.Projects.name, )  # Встановіть стандартний статус)
 
-
+    resumekontaktu = models.CharField(null=True, max_length=100000)
 
 
 
