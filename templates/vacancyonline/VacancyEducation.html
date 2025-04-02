@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Технології{% endblock %}
+
+
+
+{% block content %}
+<ul>
+
+
+
+<p>
+    <a href="{% url 'vacancy_create' %}" class="btn btn-primary">Створити вакансію</a>
+
+
+    <a href="{% url 'kategoria' %}" class="btn btn-primary">Повернутися до списку категорій вакансій</a>
+</p>
+
+
+
+
+
+
+    <a href="{% url 'GeneralSecondaryEducation' %}" class="btn btn-primary">ЗагальноСередняОсвіта</a>
+    <a href="{% url 'HigherEducation' %}" class="btn btn-primary">ВищаОсвіта</a>
+    <a href="{% url 'VocationalEducation' %}" class="btn btn-primary">ПрофесійнаТехнічнаОсвіта</a>
+
+
+
+
+
+
+</ul>
+{% endblock %}

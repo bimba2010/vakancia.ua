@@ -21,6 +21,18 @@ class VacancyCity(Enum):
     Poltava = 'Полтава'
     Vinnytsia = 'Вінниця '
 
+class VacancyEducation(Enum):
+    GeneralSecondaryEducation = 'ЗагальноСередняОсвіта'
+    HigherEducation = 'ВищаОсвіта'
+    VocationalEducation = 'ПрофесійнаТехнічнаОсвіта'
+
+
+
+
+
+
+
+
 
 
 class ResumeKategoria(Enum):
@@ -41,12 +53,15 @@ class Vacancy(models.Model):
         default = VacancyCity.Lviv.name,)  # Встановіть стандартний статус)
 
     salary = models.DecimalField(max_digits= 1000 , decimal_places= 2)
-    education = models.CharField(max_length= 1000000)
+    education = models.CharField(null = True,
+        max_length=10000,
+        choices=[(tag.name, tag.value) for tag in VacancyEducation ],
+        default=VacancyEducation.GeneralSecondaryEducation.name, )  # Встановіть стандартний статус)                                 )
     description = models.CharField(max_length= 100000)
     kategoria = models.TextField(null = True,
-        max_length=10,
+        max_length= 1000000,
         choices=[(tag.name, tag.value) for tag in Kategoria],
-        default=Kategoria.Tehno.name,)# Встановіть стандартний статус)
+        default=Kategoria.Tehno.name,)
     mainvacancy = models.CharField(null = True, max_length= 100000)
     kontaktu = models.CharField(null = True, max_length= 100000)
 
@@ -63,6 +78,7 @@ class Resume(models.Model):
                                  default=ResumeKategoria.Projects.name, )  # Встановіть стандартний статус)
 
     resumekontaktu = models.CharField(null=True, max_length=100000)
+    mainresume = models.CharField(null=True, max_length=100000)
 
 
 

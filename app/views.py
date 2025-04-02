@@ -298,3 +298,49 @@ class VacancyLogOutView(ListView):
 
 
 
+class VacancyEducationVieww(ListView):
+    model = Vacancy
+    template_name = 'vacancyonline/VacancyEducation.html'
+    context_object_name = 'VacancyEducation'
+    def get_queryset(self):
+        # Отримуємо параметр з URL-шляху
+        education = self.kwargs.get('VacancyEducation')
+
+        if education:
+            # Фільтруємо вакансії за містом
+            return Vacancy.objects.filter(education = education)
+        else:
+            # Якщо параметр відсутній, повертаємо всі вакансії
+            return Vacancy.objects.all()
+
+
+class GeneralSecondaryEducationView(ListView):
+    template_name = 'vacancyonline/GeneralSecondaryEducation.html'
+    context_object_name = 'GeneralSecondaryEducation'
+
+    def get_queryset(self):
+        # Отримуємо категорію з URL і фільтруємо пости по категорії
+        return Vacancy.objects.filter(education='GeneralSecondaryEducation')
+
+
+
+
+
+
+class HigherEducationView(ListView):
+    template_name = 'vacancyonline/HigherEducation.html'
+    context_object_name = 'HigherEducation'
+
+    def get_queryset(self):
+        # Отримуємо категорію з URL і фільтруємо пости по категорії
+        return Vacancy.objects.filter(education='HigherEducation')
+
+
+
+class VocationalEducationView(ListView):
+    template_name = 'vacancyonline/VocationalEducation.html'
+    context_object_name = 'VocationalEducation'
+
+    def get_queryset(self):
+        # Отримуємо категорію з URL і фільтруємо пости по категорії
+        return Vacancy.objects.filter(education='VocationalEducation')

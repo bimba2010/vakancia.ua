@@ -7,7 +7,8 @@ from .views import VacancyListView, VacancyDetailView, VacancyCreateView, Vacanc
     VacancyKategoriaView, VacancyTehnoView, VacancyDergavnaView, ResumeKategoriaView, ResumeProjectsView, \
     ResumeProfessionalExperienceView, VacancyCityView, VacancyKyivView, VacancyLvivView, VacancyOdessaView, \
     VacancyKharkivView, VacancyDnipropetrovskView, VacancyZaporizhzhiaView, VacancyCherkasyView, VacancyChernivtsiView, \
-    VacancyPoltavaView, VacancyVinnytsiaView, VacancyLogOutView
+    VacancyPoltavaView, VacancyVinnytsiaView, VacancyLogOutView, GeneralSecondaryEducationView, HigherEducationView, \
+    VocationalEducationView, VacancyEducationVieww
 
 urlpatterns = [
     path('vacancy_list/', VacancyListView.as_view(), name = 'vacancy'),
@@ -37,7 +38,7 @@ urlpatterns = [
     path('resumekategoria/', ResumeKategoriaView.as_view(), name='resumekategoria'),
     path('professionalexperience/', ResumeProfessionalExperienceView.as_view(), name='professionalexperience'),
     path('projects/', ResumeProjectsView.as_view(), name='projects'),
-
+    path('VacancyEducation/', VacancyEducationVieww.as_view(), name='VacancyEducation'),
 
 
 
@@ -65,4 +66,11 @@ urlpatterns = [
     path('vacancykyiv/', VacancyKyivView.as_view(), name='vacancykyiv'),
 
     path('logout/', LogoutView.as_view(next_page='vacancy'), name='logout'),
+
+
+    path('GeneralSecondaryEducation/', GeneralSecondaryEducationView.as_view(), name='GeneralSecondaryEducation'),
+
+    path('HigherEducation/', HigherEducationView.as_view(), name='HigherEducation'),
+
+    path('VocationalEducation/', VocationalEducationView.as_view(), name='VocationalEducation'),
 ]

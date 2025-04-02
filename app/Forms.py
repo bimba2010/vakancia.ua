@@ -10,4 +10,4 @@ class VacancyForm(forms.ModelForm):
 class ResumeForm(forms.ModelForm):
     class Meta:
         model = Resume
-        fields = ['title', 'resume', 'resumekategoria', 'resumekontaktu', ]  # Подаємо поля для введення
+        fields = ['title', 'mainresume', 'resume', 'resumekategoria', 'resumekontaktu', ]  # Подаємо поля для введення
